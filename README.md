@@ -1,1 +1,1 @@
-A Jquery object cache
+A simple Jquery object cache
