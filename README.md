@@ -1,4 +1,4 @@
-jQache - A simple jQuery Selector (Object) cache
+jQache - A simple jQuery Selector (object) cache
 ===============================
 jQache is a simple jQuery selector (object) cache. Simply add ".q" after "$" when selecting elements and you should be good to go.   
 
@@ -33,8 +33,8 @@ $.q.assign({
 
 // assign name "inventory" to $(".item")
 $.q.assign({
-	selector: ".item",
-	name: "inventory"
+    selector: ".item",
+    name: "inventory"
 });
 
 // get assigned objects
@@ -42,9 +42,9 @@ $.q("inventory");
 
 // refresh this object every 60 seconds
 $.q.assign({
-	selector: ".item",
-	name: "inventory",
-	interval: 60
+    selector: ".item",
+    name: "inventory",
+    interval: 60
 });
 ```
 
@@ -52,9 +52,9 @@ $.q.assign({
 ```javascript
 // assign a namespace
 $.q.assign({
-	selector: ".item",
-	name: "inventory",
-	namespace: "lists"
+    selector: ".item",
+    name: "inventory",
+    namespace: "lists"
 });
 
 // get objects from namespace
@@ -78,20 +78,20 @@ $.q.clear("inventory");
 
 ##### Markup
 ```html
-	<ul>
-		<li class="list"></li>
-	</ul>
+    <ul>
+        <li class="list"></li>
+    </ul>
 ```
 ##### Script
 ```javascript
 $.fn.ready( function(){
 
-	console.log ( $.q(".list") ); // 1 element
+    console.log ( $.q(".list") ); // 1 element
 
-	$("ul").append("<li class='list'> item </li>");
-	$("ul").append("<li class='list'> item </li>");
+    $("ul").append("<li class='list'> item </li>");
+    $("ul").append("<li class='list'> item </li>");
 
-	console.log ( $.q(".list") ); // still 1 element
-	console.log ( $.q(".list", true) ); // 3 elements
+    console.log ( $.q(".list") ); // still 1 element
+    console.log ( $.q(".list", true) ); // 3 elements
 });
 ```

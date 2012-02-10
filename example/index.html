@@ -20,13 +20,13 @@
 
 $.fn.ready( function(){
 
-	console.log ( $.q(".list") ); // 1 element
+    console.log ( $.q(".list") ); // 1 element
 
-	$("ul").append("<li class='list'> item </li>");
-	$("ul").append("<li class='list'> item </li>");
+    $("ul").append("<li class='list'> item </li>");
+    $("ul").append("<li class='list'> item </li>");
 
-	console.log ( $.q(".list") ); // still 1 element
-	console.log ( $.q(".list", true) ); // 3 elements
+    console.log ( $.q(".list") ); // still 1 element
+    console.log ( $.q(".list", true) ); // 3 elements
 })
 
 </script>
