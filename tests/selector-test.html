@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQache Performance Test</title>
+</head>
+<body>
+
+<div id="container" style="display: none;">
+	<ul>
+		<li> 1 </li>
+		<li class="target"> 2 </li>
+		<li id="target"> 3 </li>
+	</ul>
+</div>
+<div id="result"></div>
+<div id="loader" style="display:none;">loading...</div>
+<button id="start">Start tests</button>
+
+<!-- Le javascript
+================================================== -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+
+<script src="jqache-0.1.0.js"></script>
+<!-- end scripts -->
+
+<script type="text/javascript">
+$.fn.ready(function(){
+
+ /***
+	Selector template by http://jsperf.com/jquery-selector-speed-tests/41
+  	***/
+
+	var test = function() {
+		$('#target').css('border', '1px solid red');
+		$('#container .target').css('border', '1px solid red');
+		$('li.target').css('border', '1px solid red');
+		$('.target').css('border', '1px solid red');
+		$('#container ul li.target').css('border', '1px solid red');
+		$('ul li.target').css('border', '1px solid red');
+		$('div#container ul li.target').css('border', '1px solid red');
+		$('li#target').css('border', '1px solid red');
+		$('#target','#container ul').css('border', '1px solid red');
+		$('#target',$('#target').parent()).css('border', '1px solid red');
+		$('.target',$(".target").parent()).css('border', '1px solid red');
+	},
+	testCached = function() {
+		$.q('#target').css('border', '1px solid red');
+		$.q('#container .target').css('border', '1px solid red');
+		$.q('li.target').css('border', '1px solid red');
+		$.q('.target').css('border', '1px solid red');
+		$.q('#container ul li.target').css('border', '1px solid red');
+		$.q('ul li.target').css('border', '1px solid red');
+		$.q('div#container ul li.target').css('border', '1px solid red');
+		$.q('li#target').css('border', '1px solid red');
+		$.q('#target','#container ul').css('border', '1px solid red');
+		$.q('#target',$.q('#target').parent()).css('border', '1px solid red');
+		$.q('.target',$.q(".target").parent()).css('border', '1px solid red');
+	},
+	putResult = function(result, times) {
+
+		var percentage = 100 - (result["withCache"] / (result["withoutCache"] / 100));
+		percentage = Math.round(percentage*100)/100;
+		$("#result").append(times+" Times <p><b>Without cache:</b> "+result["withoutCache"]+" ms<br><b>With jQache:</b> "+result["withCache"]+" ms<br><b>Performance increase:</b> "+percentage+" %</p><hr>");
+	},
+	runTests = function(times) {
+		var start = new Date().getTime(), result = new Array();
+		for (var i = 1; i <= times; i++) test();
+		result["withoutCache"] = new Date().getTime() - start;
+
+		var start = new Date().getTime();
+		for (var i = 1; i <= times; i++) testCached();
+		result["withCache"] = new Date().getTime() - start;
+
+		putResult(result, times);				
+	};
+
+	$("#start").on("click", function() {
+		$("#loader").fadeIn(200, function(){
+			runTests(10);
+			runTests(100);
+			runTests(1000);
+			runTests(10000);			
+		}).fadeOut(200);
+	});
+})
+</script>
+<!-- end inline js -->
+
+</body>
+</html>
