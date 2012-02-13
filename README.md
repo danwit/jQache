@@ -4,6 +4,92 @@ jQache is a simple jQuery selector (object) cache. Simply add ".q" after "$" whe
 
 Don't wrap jQuery again and again and again... on DOM-elements. Use a selector cache in combination with carefully chaining.
 
+# Why?
+
+Have you ever caught yuorself doing this?
+
+```javascript
+$("myElement").addClass("myClass");
+$("myElement").removeAttr("style");
+$("myElement").show("fast");
+```
+
+then let me tell you, YOU ARE DOING IT WRONG!
+
+A better solution would be this:
+
+```javascript
+$("myElement").addClass("myClass")
+    .removeAttr("style")
+	.show("fast");
+```
+
+But if youre going to put this into a function like this:
+
+```javascript
+var myFunc = function() {
+	
+	$("myElement").addClass("myClass")
+		.removeAttr("style")
+		.show("fast");
+}
+```
+
+you wrap the jQuery object around ```myElement``` everytime you invoke ```myFunc()```.
+
+The efficient way of solving this task is caching your jQuery object.
+
+```javascript
+var myElement = $("myElement");
+
+var myFunc = function() {
+	
+	myElement.addClass("myClass")
+		.removeAttr("style")
+		.show("fast");
+}
+```
+
+But if you want to have a fresh jQuery object of ```myElement``` in another function (to grab new created elements too). You are going to write hacky code, like this:
+
+```javascript
+var myElement = $("myElement");
+
+var myFunc = function() {
+	
+	myElement.addClass("myClass")
+		.removeAttr("style")
+		.show("fast");
+}
+
+var myFreshFunc = function() {
+	
+	$(myElement).addClass("myClass")
+		.removeAttr("style")
+		.show("fast");
+}
+```
+
+With jQache your code would look like this:
+
+```javascript
+var myFunc = function() {
+	
+	$.q(myElement).addClass("myClass")
+		.removeAttr("style")
+		.show("fast");
+}
+
+var myFreshFunc = function() {
+	
+	$.q(myElement, true).addClass("myClass")
+		.removeAttr("style")
+		.show("fast");
+}
+```
+
+You could also define custom names, set a refresh interval and declare namespaces (Scroll down to read more about that stuff).
+
 # Performance
 
 jQache comes with a little performance test. Wanna see some results? Here you go:
