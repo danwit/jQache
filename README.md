@@ -14,9 +14,11 @@ $("myElement").removeAttr("style");
 $("myElement").show("fast");
 ```
 
-You did? YOU ARE DOING IT WRONG!
+You did? You are doing it wrong!
 
-A better solution would be this:
+You wrap the jQuery object around `$("myElement")` everytime you invoke `$()`
+
+A better solution would be chaining, like this:
 
 ```javascript
 $("myElement").addClass("myClass")
