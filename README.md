@@ -4,7 +4,7 @@ jQache is a simple jQuery selector (object) cache. Simply add ".q" after "$" whe
 
 Don't wrap jQuery again and again and again... on DOM-elements. Use a selector cache in combination with carefully chaining.
 
-# Why?
+# Why should i care?
 
 Have you ever caught yourself doing this?
 
