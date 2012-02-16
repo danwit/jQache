@@ -6,7 +6,7 @@ Don't wrap jQuery again and again and again... on DOM-elements. Use a selector c
 
 # Why?
 
-Have you ever caught yuorself doing this?
+Have you ever caught yourself doing this?
 
 ```javascript
 $("myElement").addClass("myClass");
@@ -14,7 +14,7 @@ $("myElement").removeAttr("style");
 $("myElement").show("fast");
 ```
 
-then let me tell you, YOU ARE DOING IT WRONG!
+You did? YOU ARE DOING IT WRONG!
 
 A better solution would be this:
 
@@ -64,7 +64,7 @@ var myFunc = function() {
 
 var myFreshFunc = function() {
 	
-	$(myElement).addClass("myClass")
+	$("myElement").addClass("myClass")
 		.removeAttr("style")
 		.show("fast");
 }
@@ -88,7 +88,7 @@ var myFreshFunc = function() {
 }
 ```
 
-You could also define custom names, set a refresh interval and declare namespaces (Scroll down to read more about that stuff).
+You could also define custom names, set a refresh interval and declare namespaces (Scroll down to read more about that kind of stuff).
 
 # Performance
 
@@ -129,8 +129,11 @@ Just load ``` <script src="path/to/js/jqache-0.1.1.min.js"></script>
 // copy $(".item") into jQache and do stuff
 $.q(".item").css("display", "none");
 
-// fetch a fresh copy of $(".item") into jQache and do stuff
-$.q(".item", true).css("display", "none");
+// use your previously stored $(".item") and do more stuff
+$.q(".item").css("color", "red");
+
+// fetch a fresh copy of $(".item") into jQache
+$.q(".item", true).css("display", "block");
 ```
 
 ### $.q.assign( *object* options )
