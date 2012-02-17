@@ -1,4 +1,4 @@
-jQache - A simple jQuery Selector (object) cache
+jQache - A simple jQuery selector (object) cache
 ===============================
 jQache is a simple jQuery selector (object) cache. Simply add ".q" after "$" when selecting elements and you should be good to go.   
 
@@ -16,7 +16,7 @@ $("myElement").show("fast");
 
 You did? You are doing it wrong!
 
-You wrap the jQuery object around `$("myElement")` everytime you invoke `$()`
+You wrap the jQuery object around `$("myElement")` everytime you invoke `$()`.
 
 A better solution would be chaining, like this:
 
@@ -26,7 +26,7 @@ $("myElement").addClass("myClass")
 	.show("fast");
 ```
 
-But if youre going to put this into a function like this:
+But if youre going to put this into a function, like this:
 
 ```javascript
 var myFunc = function() {
@@ -98,24 +98,24 @@ jQache comes with a little performance test. Wanna see some results? Here you go
 
 <pre>
 10 Times
-Without cache: 13 ms
-With jQache: 5 ms
-Performance increase: 61.54 %
+ Without cache:         13 ms
+ With jQache:           5 ms
+ Performance increase:  61.54 %
 
 100 Times
-Without cache: 58 ms
-With jQache: 18 ms
-Performance increase: 68.97 %
+ Without cache:         58 ms
+ With jQache:           18 ms
+ Performance increase:  68.97 %
 
 1000 Times
-Without cache: 421 ms
-With jQache: 176 ms
-Performance increase: 58.19 %
+ Without cache:         421 ms
+ With jQache:           176 ms
+ Performance increase:  58.19 %
 
 10000 Times
-Without cache: 3982 ms
-With jQache: 1786 ms
-Performance increase: 55.15 %
+ Without cache:         3982 ms
+ With jQache:           1786 ms
+ Performance increase:  55.15 %
 </pre>
 
 # Setup
@@ -123,7 +123,10 @@ Performance increase: 55.15 %
 Just load ``` <script src="path/to/js/jqache-0.1.1.min.js"></script>
 ``` after jQuery.
 
-# Usage
+# Basic usage
+
+`set` and `get`? You dont need them. If you hit it once, you get the exact same object the next time 
+until you set the `clear` argument to `true`.
 
 ### $.q( *string* selector, [*bool* clear] )
 
@@ -138,9 +141,14 @@ $.q(".item").css("color", "red");
 $.q(".item", true).css("display", "block");
 ```
 
+# A little more advanced usage
+
+You can assign names to objects, or even declare them in their own namespaces. Additionally you can go 
+completely crazy and define some interval.
+
 ### $.q.assign( *object* options )
 
-##### Single
+If you dont have a need for namespaces.
 
 ```javascript
 // equivalent to $.q(".item")
@@ -165,7 +173,8 @@ $.q.assign({
 });
 ```
 
-##### Namespaces
+If you DO have a need for namespaces!
+
 ```javascript
 // assign a namespace
 $.q.assign({
@@ -183,7 +192,11 @@ $.q.lists("inventory", true);
 // get everything from namespace
 $.q.lists();
 ```
+
 ### .q.clear( [*string* namespace] )
+
+If you want to completely clear the cache or a certain namespace.
+
 ```javascript
 //clear everything
 $.q.clear();
