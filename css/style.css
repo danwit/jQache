@@ -141,4 +141,12 @@ blockquote small {
 }
 
 blockquote small:before {
-	
+  content: '\2014 \00A0';
+}
+
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: "";
+}
