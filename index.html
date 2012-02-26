@@ -1,99 +1,333 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset='utf-8'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>jQache - A simple jQuery selector (object) cache</title>
+    <meta name="description" content="A simple jQuery selector (object) cache. Don't wrap jQuery again and again on DOM-elements. Use a selector cache in combination with carefully chaining.">
+    <meta name="author" content="danwit">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <title>danwit/jQache @ GitHub</title>
-
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #fafafa;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #050505; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #050505; }
-    h3 { text-align: center; color: #050505; }
-    a { color: #050505; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+    <link href="/css/prettify.css" type="text/css" rel="stylesheet">
+    <link href="/css/style.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
-  <a href="https://github.com/danwit/jQache"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+    <div id="overlay"></div>
+    <a href="https://github.com/danwit/jQache"><img style="position: absolute; z-index: 256; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+    <div id="container">
+        <div class="download">
+            <a href="https://github.com/danwit/jQache/zipball/master"><img border="0" width="90" src="https://github.com/images/modules/download/zip.png" alt="Download as ZIP"></a>
+            <a href="https://github.com/danwit/jQache/tarball/master"><img border="0" width="90" src="https://github.com/images/modules/download/tar.png" alt="Download as TAR"></a>
+        </div>
 
-  <div id="container">
+        <h1><a href="https://www.jqache.com">jQache</a></h1>
 
-    <div class="download">
-      <a href="https://github.com/danwit/jQache/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/danwit/jQache/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
+        <div class="description">
+          A simple jQuery selector (object) cache
+        </div>
 
-    <h1><a href="https://github.com/danwit/jQache">jQache</a>
-      <span class="small">by <a href="https://github.com/danwit">danwit</a></span></h1>
+        <blockquote>
+            <p><i>"Don't wrap jQuery again and again on DOM-elements. Use a selector cache in combination with carefully chaining."</i></p>
+            <small><cite title="">me ;-)</cite></small>
+        </blockquote>
 
-    <div class="description">
-      A simple jQuery selector (object) cache
-    </div>
+        <p>With jQache you dont have to care about jQuery selector caching. Its easy to use!
+        Just replace <code>$(myElement)</code> with <code>$.q(myElement)</code> and you are good to go!</p>
+        <p>jQache lets you also assign names to objects, define an interval for automatic refreshes or even declare namespaces to handle element collections.</p>
 
-    
-      <p>jQache is a simple jQuery selector (object) cache. Simply add ".q" after "$" when selecting elements and you should be good to go.
+        <a name="why"></a>
+        <hr>
+        <a class="link" href="#why">Why should i care?</a>
+        <a class="link" href="#performance">Performance Test</a>
+        <a class="link" href="#download">Download</a>
+        <a class="link" href="#setup">Setup</a>
+        <a class="link" href="#basic">Basic Usage</a>
+        <a class="link" href="#advanced">Advanced Usage</a>
+        <a class="link" href="#example">Example</a>
 
-Don't wrap jQuery again and again and again... on DOM-elements. Use a selector cache in combination with carefully chaining.</p>
-    
+        <h2>Why should i care?</h2>
 
-    
-      <h2>Dependencies</h2>
-      <p>jQuery</p>
-    
+        <p>Have you ever caught yourself doing this?</p>
+        <pre class="prettyprint lang-js">
+$("myElement").addClass("myClass");
+$("myElement").removeAttr("style");
+$("myElement").show("fast"); </pre>
 
-    
-      <h2>Install</h2>
-      <p>Just load <script src="path/to/js/jqache-0.1.1.min.js"></script> after jQuery.</p>
-    
+        <p>You did? You are doing it wrong!
+        You wrap the jQuery object around <code>$("myElement")</code> everytime you invoke <code>$()</code>.
+        A better solution would be chaining, like this:</p>
+        
+        <pre class="prettyprint lang-js">
+$("myElement").addClass("myClass")
+    .removeAttr("style")
+    .show("fast"); </pre>
 
-    
+        <p>But if youre going to put this into a function, like this:</p>
 
-    
-      <h2>Authors</h2>
-      <p>danwit (mindpaste@gmx.de)</p>
-    
+        <pre class="prettyprint lang-js">
+var myFunc = function() {
 
-    
-      <h2>Contact</h2>
-      <p>danwit (mindpaste@gmx.de)</p>
-    
+    $("myElement").addClass("myClass")
+        .removeAttr("style")
+        .show("fast");
+} </pre>
 
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/danwit/jQache/zipball/master">zip</a> or
-      <a href="https://github.com/danwit/jQache/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/danwit/jQache</pre>
-    </p>
+        <p>you wrap the jQuery object around <code>myElement</code> everytime you invoke <code>myFunc()</code>.
+        The efficient way of solving this task is caching your jQuery object:</p>
 
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/danwit/jQache">danwit/jQache</a>
-    </div>
+        <pre class="prettyprint lang-js">
+var myElement = $("myElement");
+
+var myFunc = function() {
+
+    myElement.addClass("myClass")
+        .removeAttr("style")
+        .show("fast");
+} </pre>
+
+        <p>But if you need a fresh jQuery object of <code>myElement</code> in another function (to grab new created elements too).
+        You are going to write hacky code, like this:</p>
+
+        <pre class="prettyprint lang-js">
+var myElement = $("myElement");
+
+var myFunc = function() {
+
+    myElement.addClass("myClass")
+        .removeAttr("style")
+        .show("fast");
+}
+
+var myFreshFunc = function() {
+
+    $("myElement").addClass("myClass")
+        .removeAttr("style")
+        .show("fast");
+} </pre>
+
+        <p>With jQache your code would look like this:</p>
+        
+        <pre class="prettyprint lang-js">
+var myFunc = function() {
+
+    $.q(myElement).addClass("myClass")
+        .removeAttr("style")
+        .show("fast");
+}
+
+var myFreshFunc = function() {
+
+    $.q(myElement, true).addClass("myClass")
+        .removeAttr("style")
+        .show("fast");
+} </pre>
+
+        <p>You could also define <strong>custom names</strong>, set a <strong>refresh interval</strong> and declare <strong>namespaces</strong>
+        (See <a href="#advanced">Advanced Usage</a> to read more about that kind of stuff).</p>
+
+        <a name="performance"></a>
+        <hr>
+        <a class="link" href="#why">Why should i care?</a>
+        <a class="link" href="#performance">Performance Test</a>
+        <a class="link" href="#download">Download</a>
+        <a class="link" href="#setup">Setup</a>
+        <a class="link" href="#basic">Basic Usage</a>
+        <a class="link" href="#advanced">Advanced Usage</a>
+        <a class="link" href="#example">Example</a>
+
+        <h2>Performance Test</h2>
+
+        <p>jQache comes with a little performance test. Wanna see some results? Here you go:</p>
+        <pre>
+10 Times
+  Without cache:         13 ms
+  With jQache:           5 ms
+  Performance increase:  61.54 %
+
+100 Times
+  Without cache:         58 ms
+  With jQache:           18 ms
+  Performance increase:  68.97 %
+
+1000 Times
+  Without cache:         421 ms
+  With jQache:           176 ms
+  Performance increase:  58.19 %
+
+10000 Times
+  Without cache:         3982 ms
+  With jQache:           1786 ms
+  Performance increase:  55.15 % </pre>
+
+        <a name="download"></a>
+        <hr>
+        <a class="link" href="#why">Why should i care?</a>
+        <a class="link" href="#performance">Performance Test</a>
+        <a class="link" href="#download">Download</a>
+        <a class="link" href="#setup">Setup</a>
+        <a class="link" href="#basic">Basic Usage</a>
+        <a class="link" href="#advanced">Advanced Usage</a>
+        <a class="link" href="#example">Example</a>
+
+        <h2>Download</h2>
+        <p>
+            You can download this project in either
+            <a href="https://github.com/danwit/jQache/zipball/master">zip</a> or
+            <a href="https://github.com/danwit/jQache/tarball/master">tar</a> formats.
+        </p>
+        
+        <p> You can also clone the project with <a href="http://git-scm.com">Git</a> by running: </p>
+        <pre class="prettify lang-bsh">$ git clone git://github.com/danwit/jQache</pre>
+
+        <a name="setup"></a>
+        <hr>
+        <a class="link" href="#why">Why should i care?</a>
+        <a class="link" href="#performance">Performance Test</a>
+        <a class="link" href="#download">Download</a>
+        <a class="link" href="#setup">Setup</a>
+        <a class="link" href="#basic">Basic Usage</a>
+        <a class="link" href="#advanced">Advanced Usage</a>
+        <a class="link" href="#example">Example</a>
+
+        <h2>Setup</h2>
+        <p>Just load</p>
+        <pre class="nopaste prettify lang-html">&lt;script src="path/to/js/jqache-0.1.1.min.js"&gt;&lt;/script&gt;</pre> 
+        <p>after jQuery.</p>
+
+        <a name="basic"></a>
+        <hr>
+        <a class="link" href="#why">Why should i care?</a>
+        <a class="link" href="#performance">Performance Test</a>
+        <a class="link" href="#download">Download</a>
+        <a class="link" href="#setup">Setup</a>
+        <a class="link" href="#basic">Basic Usage</a>
+        <a class="link" href="#advanced">Advanced Usage</a>
+        <a class="link" href="#example">Example</a>
+
+        <h2>Basic usage</h2>
+        <p><code>Set</code> and <code>Get</code>? You dont need them. If you hit it once, you get the exact same object the next time until you set the <code>clear</code> argument to true.</p>
+
+        <h3>$.q( <i>string</i> selector, [<i>bool</i> clear] )</h3>
+
+        <pre class="prettyprint lang-js">
+// copy $(".item") into jQache and do stuff
+$.q(".item").css("display", "none");
+
+// use your previously stored $(".item") and do more stuff
+$.q(".item").css("color", "red");
+
+// fetch a fresh copy of $(".item") into jQache
+$.q(".item", true).css("display", "block"); </pre>
+
+        <a name="advanced"></a>
+        <hr>
+        <a class="link" href="#why">Why should i care?</a>
+        <a class="link" href="#performance">Performance Test</a>
+        <a class="link" href="#download">Download</a>
+        <a class="link" href="#setup">Setup</a>
+        <a class="link" href="#basic">Basic Usage</a>
+        <a class="link" href="#advanced">Advanced Usage</a>
+        <a class="link" href="#example">Example</a>
+
+        <h2>A little more advanced usage</h2>
+        <p>You can assign names to objects, or even declare them in their own namespaces. Additionally you can go completely crazy and define some interval.</p>
+
+        <h3>$.q.assign( <i>object</i> options )</h3>
+
+        <p>If you dont have a need for <b>namespaces</b>.</p>
+        <pre class="prettyprint lang-js">
+// equivalent to $.q(".item")
+$.q.assign({
+    selector: ".item"
+});
+
+// assign name "inventory" to $(".item")
+$.q.assign({
+    selector: ".item",
+    name: "inventory"
+});
+
+// get assigned objects
+$.q("inventory");
+
+// refresh this object every 60 seconds
+$.q.assign({
+    selector: ".item",
+    name: "inventory",
+    interval: 60
+}); </pre>
+
+        <p>If you DO have a need for <b>namespaces</b>!</p>
+
+        <pre class="prettyprint lang-js">
+// assign a namespace
+$.q.assign({
+    selector: ".item",
+    name: "inventory",
+    namespace: "lists"
+});
+
+// get objects from namespace
+$.q.lists("inventory");
+
+// get fresh objects from namespace
+$.q.lists("inventory", true);
+
+// get everything from namespace
+$.q.lists(); </pre>
+
+        <br>
+        <h3>.q.clear( [<i>string</i> namespace] )</h3>
+
+        <p>If you want to completely clear the cache or a certain namespace.</p>
+        <pre class="prettyprint lang-js">
+//clear everything
+$.q.clear();
+
+//clear namespace
+$.q.clear("inventory"); </pre>
+
+        <a name="example"></a>
+        <hr>
+        <a class="link" href="#why">Why should i care?</a>
+        <a class="link" href="#performance">Performance Test</a>
+        <a class="link" href="#download">Download</a>
+        <a class="link" href="#setup">Setup</a>
+        <a class="link" href="#basic">Basic Usage</a>
+        <a class="link" href="#advanced">Advanced Usage</a>
+        <a class="link" href="#example">Example</a>
+
+        <h2>Example</h2>
+
+        <h3>Markup</h3>
+        <pre class="prettyprint lang-html">
+<ul>
+    <li class="list"></li>
+</ul> </pre>
+
+        <h3>Script</h3>
+        <pre class="prettyprint lang-js">
+$.fn.ready( function(){
+
+    console.log ( $.q(".list") ); // 1 element
+
+    $("ul").append("<li class='list'> item </li>");
+    $("ul").append("<li class='list'> item </li>");
+
+    console.log ( $.q(".list") ); // still 1 element
+    console.log ( $.q(".list", true) ); // 3 elements
+}); </pre>
+
+        <div class="footer">
+            get the source code on GitHub : <a href="https://github.com/danwit/jQache">danwit/jQache</a>
+        </div>
 
   </div>
 
+<script src="/js/prettify.js" type="text/javascript"></script>    
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -102,6 +336,12 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 try {
 var pageTracker = _gat._getTracker("UA-29506453-1");
 pageTracker._trackPageview();
+$.fn.ready(function(){
+  $("pre,code").not(".nopaste").each(function(){
+    $(this).text($(this).html());
+  })
+  prettyPrint();
+})
 } catch(err) {}</script>"
 </body>
 </html>
