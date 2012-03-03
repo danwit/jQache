@@ -228,7 +228,7 @@ $.fn.ready( function(){
 });
 ```
 
-##### License
+# License
 BSD 3-Clause License
 Copyright (c) 2012, Danny "danwit" Witting
 All rights reserved.
