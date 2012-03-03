@@ -53,6 +53,7 @@
         <a class="link" href="#basic">Basic Usage</a>
         <a class="link" href="#advanced">Advanced Usage</a>
         <a class="link" href="#example">Example</a>
+        <a class="link" href="#license">License</a>
 
         <h2>Why should i care about caching?</h2>
 
@@ -143,6 +144,7 @@ var myFreshFunc = function() {
         <a class="link" href="#basic">Basic Usage</a>
         <a class="link" href="#advanced">Advanced Usage</a>
         <a class="link" href="#example">Example</a>
+        <a class="link" href="#license">License</a>
 
         <h2>Performance Test</h2>
 
@@ -167,13 +169,7 @@ var myFreshFunc = function() {
   Without cache:         3982 ms
   With jQache:           1786 ms
   Performance increase:  55.15 % </pre>
-
-        <h3>Try for yourself</hr>
-        <br>
-        <textarea class="nopaste prettify lang-html">
-
-        </textarea>
-
+        <p>Also check out <a href="http://jsperf.com/jqache/embed" target="blank">jsperf</a>!</p>
         <a name="download"></a>
         <hr>
         <a class="link" href="#why">Why?</a>
@@ -183,6 +179,7 @@ var myFreshFunc = function() {
         <a class="link" href="#basic">Basic Usage</a>
         <a class="link" href="#advanced">Advanced Usage</a>
         <a class="link" href="#example">Example</a>
+        <a class="link" href="#license">License</a>
 
         <h2>Download</h2>
         <p>
@@ -203,6 +200,7 @@ var myFreshFunc = function() {
         <a class="link" href="#basic">Basic Usage</a>
         <a class="link" href="#advanced">Advanced Usage</a>
         <a class="link" href="#example">Example</a>
+        <a class="link" href="#license">License</a>
 
         <h2>Setup</h2>
         <p>Just load</p>
@@ -218,6 +216,7 @@ var myFreshFunc = function() {
         <a class="link" href="#basic">Basic Usage</a>
         <a class="link" href="#advanced">Advanced Usage</a>
         <a class="link" href="#example">Example</a>
+        <a class="link" href="#license">License</a>
 
         <h2>Basic usage</h2>
         <p><code>Set</code> and <code>Get</code>? You dont need them. If you hit it once, you get the exact same object the next time until you set the <code>clear</code> argument to true.</p>
@@ -243,6 +242,7 @@ $.q(".item", true).css("display", "block"); </pre>
         <a class="link" href="#basic">Basic Usage</a>
         <a class="link" href="#advanced">Advanced Usage</a>
         <a class="link" href="#example">Example</a>
+        <a class="link" href="#license">License</a>
 
         <h2>A little more advanced usage</h2>
         <p>You can assign names to objects, or even declare them in their own namespaces. Additionally you can go completely crazy and define some interval.</p>
@@ -311,6 +311,7 @@ $.q.clear("inventory"); </pre>
         <a class="link" href="#basic">Basic Usage</a>
         <a class="link" href="#advanced">Advanced Usage</a>
         <a class="link" href="#example">Example</a>
+        <a class="link" href="#license">License</a>
 
         <h2>Example</h2>
 
@@ -333,15 +334,61 @@ $.fn.ready( function(){
     console.log ( $.q(".list", true) ); // 3 elements
 }); </pre>
 
-        <div class="footer">
-            get the source code on GitHub : <a href="https://github.com/danwit/jQache">danwit/jQache</a>
-        </div>
+        <a name="license"></a>
+        <hr>
+        <a class="link" href="#why">Why?</a>
+        <a class="link" href="#performance">Performance Test</a>
+        <a class="link" href="#download">Download</a>
+        <a class="link" href="#setup">Setup</a>
+        <a class="link" href="#basic">Basic Usage</a>
+        <a class="link" href="#advanced">Advanced Usage</a>
+        <a class="link" href="#example">Example</a>
+        <a class="link" href="#license">License</a>
+
+        <h2>License</h2>
+
+        <pre>
+BSD 3-Clause License
+Copyright (c) 2012, Danny "danwit" Witting
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice,
+      this list of conditions and the following disclaimer.
+
+    * Redistributions in binary form must reproduce the above copyright notice,
+      this list of conditions and the following disclaimer in the documentation
+      and/or other materials provided with the distribution.
+
+    * Neither the name of the author nor the names of its contributors
+      may be used to endorse or promote products derived from this software
+      without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES 
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON 
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+        </pre>
+        
+
+    <div class="footer">
+        get the source code on GitHub : <a href="https://github.com/danwit/jQache">danwit/jQache</a>
+    </div>
 
   </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/js/jquery-1.7.1.min.js"><\/script>')</script>
 <script src="/js/plugins.js" type="text/javascript"></script>
+<script src="/js/script.js" type="text/javascript"></script>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
