@@ -49,13 +49,20 @@ h1 a {
 }
 
 h2 {
-	font-size: 2.5em;
+	font-size: 1.5em;
 	margin: 50px 0 20px;
 	text-shadow: #AAA 0px 1px 2px;
 	color: #545454;
 }
 
 h3 {
+	font-size: 2.5em;
+	margin: 50px 0 20px;
+	text-shadow: #AAA 0px 1px 2px;
+	color: #545454;
+}
+
+h4 {
 	font-size: 1.1em;
 	margin: 20px 0 10px;
 	color: #545454;
@@ -90,9 +97,18 @@ pre {
 	padding: 15px;
 }
 
+ul {
+	color: #545454;
+}
+
+li {
+	line-height: 25px;
+	list-style-type: circle
+}
+
 hr {
-	border: 0;
-	border-bottom: 1px solid #aaa;
+	border: 1px solid #bbb;
+	border-bottom: 1px solid #fff;
 	margin: 25px 0;
 }
 

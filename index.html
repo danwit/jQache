@@ -32,11 +32,17 @@
             <small><cite title="">me ;-)</cite></small>
         </blockquote>
 
-        <p><b>Wanna see <a href="http://jsperf.com/jqache" target="_blank">jQache performance in Action</a>?</b></p>
-
-        <p>With jQache you dont have to care about jQuery selector caching. Its easy to use!
-        Just replace <code>$(myElement)</code> with <code>$.q(myElement)</code> and you are good to go!</p>
+        <p><b>Why its cool</b> <small>(in a list, couse lists are awesome!)</small></p>
+        <ul>
+            <li>You dont have to care about jQuery selector caching.</li>
+            <li>Its easy to use! With jQache you cache while you select an element.</li>
+            <li>Just replace <code>$(myElement)</code> with <code>$.q(myElement)</code> and you are good to go!</li>
+        </ul>
+        
+        <pre class="prettyprint lang-js">$.q("myElement").css("color", "#f00")</pre>
         <p>jQache lets you also assign names to objects, define an interval for automatic refreshes or even declare namespaces to handle element collections.</p>
+
+        <p><b>Wanna see <a href="http://jsperf.com/jqache" target="_blank">jQache performance in Action</a>?</b></p>
 
         <a name="why"></a>
         <hr>
