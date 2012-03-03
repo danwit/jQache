@@ -1,4 +1,4 @@
-/* BSD 3-Clause License - See LICENSE */
+/* jQache - BSD 3-Clause License - See LICENSE */
 ;( function ( $ ) {
     
     $._jqache = {};
