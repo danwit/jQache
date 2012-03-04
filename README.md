@@ -79,14 +79,14 @@ With jQache your code would look like this:
 ```javascript
 var myFunc = function() {
 	
-	$.q(myElement).addClass("myClass")
+	$.q("myElement").addClass("myClass")
 		.removeAttr("style")
 		.show("fast");
 }
 
 var myFreshFunc = function() {
 	
-	$.q(myElement, true).addClass("myClass")
+	$.q("myElement", true).addClass("myClass")
 		.removeAttr("style")
 		.show("fast");
 }
