@@ -2,11 +2,11 @@ jQache - A simple jQuery selector (object) cache
 ===============================
 jQache is a simple jQuery selector (object) cache. Simply add ".q" after "$" when selecting elements and you should be good to go.   
 
-Don't wrap jQuery again and again and again... on DOM-elements. Use a selector cache in combination with carefully chaining.
+Don't wrap jQuery again and again and again... on DOM-elements. Use a selector cache in combination with careful chaining.
 
-**Wann see jQache performance in action? ->** http://jsperf.com/jqache
+**Wanna see jQache performance in action? ->** http://jsperf.com/jqache
 
-# Why should i care about caching?
+# Why should I care about caching?
 
 Have you ever caught yourself doing this?
 
@@ -28,7 +28,7 @@ $("myElement").addClass("myClass")
 	.show("fast");
 ```
 
-But if youre going to put this into a function, like this:
+But if you're going to put this into a function, like this:
 
 ```javascript
 var myFunc = function() {
@@ -41,7 +41,7 @@ var myFunc = function() {
 
 you wrap the jQuery object around ```myElement``` everytime you invoke ```myFunc()```.
 
-The efficient way of solving this task is caching your jQuery object.
+The efficient way of solving this task is to cache your jQuery object.
 
 ```javascript
 var myElement = $("myElement");
@@ -54,7 +54,7 @@ var myFunc = function() {
 }
 ```
 
-But if you want to have a fresh jQuery object of ```myElement``` in another function (to grab new created elements too). You are going to write hacky code, like this:
+But if you want to have a fresh jQuery object of ```myElement``` in another function (to grab newly created elements too), you are going to write hacky code, like this:
 
 ```javascript
 var myElement = $("myElement");
@@ -92,11 +92,11 @@ var myFreshFunc = function() {
 }
 ```
 
-You could also define custom names, set a refresh interval and declare namespaces (Scroll down to read more about that kind of stuff).
+You could also define custom names, set a refresh interval and declare namespaces (scroll down to read more about that kind of stuff).
 
 # Performance
 
-jQache comes with a little performance test. Wanna see some results? Here you go:
+jQache comes with a small performance test. Wanna see some results? Here you go:
 
 <pre>
 10 Times
@@ -145,12 +145,12 @@ $.q(".item", true).css("display", "block");
 
 # A little more advanced usage
 
-You can assign names to objects, or even declare them in their own namespaces. Additionally you can go 
+You can assign names to objects, or even declare them in their own namespace. Additionally you can go 
 completely crazy and define some interval.
 
 ### $.q.assign( *object* options )
 
-If you dont have a need for namespaces.
+If you don't need namespaces:
 
 ```javascript
 // equivalent to $.q(".item")
@@ -175,7 +175,7 @@ $.q.assign({
 });
 ```
 
-If you DO have a need for namespaces!
+If you DO need for namespaces:
 
 ```javascript
 // assign a namespace
