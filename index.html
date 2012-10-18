@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>jQache - A simple jQuery selector (object) cache</title>
-    <meta name="description" content="A simple jQuery selector (object) cache. Don't wrap jQuery again and again on DOM-elements. Use a selector cache in combination with carefully chaining.">
+    <meta name="description" content="A simple jQuery selector (object) cache. Don't wrap jQuery again and again on DOM-elements. Use a selector cache in combination with careful chaining.">
     <meta name="author" content="danwit">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -28,7 +28,7 @@
         </div>
 
         <blockquote>
-            <p><i>"Don't wrap jQuery again and again on DOM-elements. Use a selector cache in combination with carefully chaining."</i></p>
+            <p><i>"Don't wrap jQuery again and again on DOM-elements. Use a selector cache in combination with careful chaining."</i></p>
             <small><cite title="">me ;-)</cite></small>
         </blockquote>
 
@@ -55,7 +55,7 @@
         <a class="link" href="#example">Example</a>
         <a class="link" href="#license">License</a>
 
-        <h2>Why should i care about caching?</h2>
+        <h2>Why should I care about caching?</h2>
 
         <p>Have you ever caught yourself doing this?</p>
         <pre class="prettyprint lang-js">
@@ -72,7 +72,7 @@ $("myElement").addClass("myClass")
     .removeAttr("style")
     .show("fast"); </pre>
 
-        <p>But if youre going to put this into a function, like this:</p>
+        <p>But if you're going to put this into a function, like this:</p>
 
         <pre class="prettyprint lang-js">
 var myFunc = function() {
@@ -83,7 +83,7 @@ var myFunc = function() {
 } </pre>
 
         <p>you wrap the jQuery object around <code>myElement</code> everytime you invoke <code>myFunc()</code>.
-        The efficient way of solving this task is caching your jQuery object:</p>
+        The efficient way of solving this task is to cache your jQuery object:</p>
 
         <pre class="prettyprint lang-js">
 var myElement = $("myElement");
@@ -95,8 +95,8 @@ var myFunc = function() {
         .show("fast");
 } </pre>
 
-        <p>But if you need a fresh jQuery object of <code>myElement</code> in another function (to grab new created elements too).
-        You are going to write hacky code, like this:</p>
+        <p>But if you need a fresh jQuery object of <code>myElement</code> in another function (to grab newly created elements too),
+        you are going to write hacky code, like this:</p>
 
         <pre class="prettyprint lang-js">
 var myElement = $("myElement");
@@ -148,7 +148,7 @@ var myFreshFunc = function() {
 
         <h2>Performance Test</h2>
 
-        <p>jQache comes with a little performance test. Wanna see some results? Here you go:</p>
+        <p>jQache comes with a small performance test. Wanna see some results? Here you go:</p>
         <pre>
 10 Times
   Without cache:         13 ms
@@ -245,11 +245,11 @@ $.q(".item", true).css("display", "block"); </pre>
         <a class="link" href="#license">License</a>
 
         <h2>A little more advanced usage</h2>
-        <p>You can assign names to objects, or even declare them in their own namespaces. Additionally you can go completely crazy and define some interval.</p>
+        <p>You can assign names to objects, or even declare them in their own namespace. Additionally you can go completely crazy and define some interval.</p>
 
         <h3>$.q.assign( <i>object</i> options )</h3>
 
-        <p>If you dont have a need for <b>namespaces</b>.</p>
+        <p>If you don't need <b>namespaces:</b></p>
         <pre class="prettyprint lang-js">
 // equivalent to $.q(".item")
 $.q.assign({
@@ -272,7 +272,7 @@ $.q.assign({
     interval: 60
 }); </pre>
 
-        <p>If you DO have a need for <b>namespaces</b>!</p>
+        <p>If you DO need <b>namespaces:</b></p>
 
         <pre class="prettyprint lang-js">
 // assign a namespace
