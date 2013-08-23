@@ -175,7 +175,7 @@ $.q.assign({
 });
 ```
 
-If you DO need for namespaces:
+If you DO need namespaces:
 
 ```javascript
 // assign a namespace
