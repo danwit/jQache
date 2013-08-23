@@ -130,7 +130,7 @@ Just load ``` <script src="path/to/js/jqache-0.1.1.min.js"></script>
 `set` and `get`? You dont need them. If you hit it once, you get the exact same object the next time 
 until you set the `clear` argument to `true`.
 
-### $.q( *string* selector, [*bool* clear] )
+### $.q( *string* selector, [ *bool* clear ] )
 
 ```javascript
 // copy $(".item") into jQache and do stuff
@@ -195,7 +195,7 @@ $.q.lists("inventory", true);
 $.q.lists();
 ```
 
-### .q.clear( [*string* namespace] )
+### .q.clear( [ *string* namespace ] )
 
 If you want to completely clear the cache or a certain namespace.
 
