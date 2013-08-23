@@ -204,7 +204,7 @@ If you want to completely clear the cache or a certain namespace.
 $.q.clear();
 
 //clear namespace
-$.q.clear("inventory");
+$.q.clear("lists");
 ```
 ### Example
 
