@@ -1,3 +1,9 @@
+#
+#
+# Abandoned - Not maintained anymore
+#
+#
+
 jQache - A simple jQuery selector (object) cache
 ===============================
 jQache is a simple jQuery selector (object) cache. Simply add ".q" after "$" when selecting elements and you should be good to go.   
